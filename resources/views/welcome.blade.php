@@ -94,6 +94,12 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
+            <div>
+                @foreach($val as $vals)
+                    {{$vals}}
+                @endforeach
+            </div>
         </div>
+        
     </body>
 </html>
