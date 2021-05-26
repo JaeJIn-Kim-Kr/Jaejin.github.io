@@ -12,17 +12,9 @@
 */
 
 Route::get('/', function () {
-
-    $val = ["Test","name"];
-
-    return view('welcome',[
-        'val'=>$val
-    ]);
+    return view('welcome');
 });
 
 Auth::routes();
-
-
-
 
 Route::get('/home', 'HomeController@index')->name('home');
