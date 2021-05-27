@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/todoList', function(){
-    return view('/todoList');
+Route::middleware('auth')->group(function(){
+    Route::get('/todoList', 'TaskController@index');
 });
