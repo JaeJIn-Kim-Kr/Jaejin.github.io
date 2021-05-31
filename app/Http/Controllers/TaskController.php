@@ -14,7 +14,11 @@ class TaskController extends Controller
     public function index()
     {
         $id = Auth::user();
-        $row = DB::table('tasks')->where('user_id', $id->id)->latest()->get();
+        $row = DB::table('tasks')->where([
+            'user_id' => $id->id,
+            'waste_Chk' => 'N'
+        ])->latest()->get();
+
         return view('/todoList', [
             'list'=>$row
         ]);
@@ -33,9 +37,10 @@ class TaskController extends Controller
         ]);
 
         $values = [
-            'title' => request('title'),
-            'content' => request('content'),
-            'user_id' => auth()->id()
+            'title'     => request('title'),
+            'content'   => request('content'),
+            'user_id'   => auth()->id(),
+            'waste_Chk' => 'N'
         ];
         
         $todo = Task::create(

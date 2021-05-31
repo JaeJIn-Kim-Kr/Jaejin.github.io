@@ -3,12 +3,12 @@
 
 
 @section('content')
-    <ul>
+    <ul class="mt-10">
         @foreach($list as $lists)
             <li>
-                <div class="flex w-10/12 mx-auto mb-3 border-solid border-2 border-light-blue-300 ">
+                <div class="flex w-10/12 mx-auto mb-3 border-solid border-2 border-light-blue-300 rounded">
                     <div class="flex-none w-48 relative">
-                        <img src="/classic-utility-jacket.jpg" alt="" class="absolute inset-0 w-full h-full object-cover"/>
+                        <img src="https://placeimg.com/192/303/any/grayscale" alt="" class="absolute inset-0 w-full h-full object-cover"/>
                     </div>
                     <div class="flex-auto p-6">
                         <div class="flex flex-wrap">
@@ -24,26 +24,11 @@
                         </div>
                         <div class="flex items-baseline mt-4 mb-6">
                             <div class="space-x-2 flex">
-                                <label class="mr-3">
-                                    <input class="w-5 h-5 flex items-center justify-center bg-gray-100 rounded-lg" name="size" type="radio" value="xs" checked="checked">
-                                        Excellent!
-                                </label>
-                                <label class="mr-3">
-                                    <input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="s">
-                                    Good!
-                                </label>
-                                <label class="mr-3">
-                                    <input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="m">
-                                    SoSo
-                                </label>
-                                <label class="mr-3">
-                                    <input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="l">
-                                    Not Bad
-                                </label>
-                                <label class="mr-3">
-                                    <input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="xl">
-                                    Bad
-                                </label>
+                                <span><input class="w-5 h-5 flex items-center justify-center bg-gray-100 rounded-lg" name="size" type="radio" value="xs"><label class="mr-3">Excellent!</label></span>
+                                <span><input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="s"><label class="mr-3">Good!</label></span>
+                                <span><input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="m"><label class="mr-3">SoSo</label></span>
+                                <span><input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="l"><label class="mr-3">Not Bad</label></span>
+                                <span><input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="xl"><label class="mr-3">Bad</label></span>
                             </div>
                         </div>
                         <div class="flex space-x-3 mb-4 text-sm font-medium">
