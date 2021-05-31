@@ -18,4 +18,11 @@ class TaskController extends Controller
             'list'=>$row
         ]);
     }
+
+
+
+    public function create()
+    {
+        return view('tasks.create');
+    }
 }
