@@ -12,9 +12,9 @@
                     </div>
                     <div class="flex-auto p-6">
                         <div class="flex flex-wrap">
-                            <h1 class="flex-auto text-xl font-semibold">
-                                {{$lists->title}}
-                            </h1>
+                            <h3 class="flex-auto text-xl font-semibold">
+                                <a href="/tasks/view/{{$lists->num}}">{{$lists->title}}</a>
+                            </h3>
                             <div class="text-xl font-semibold text-gray-500">
                                 {{$lists->user_id}}
                             </div>

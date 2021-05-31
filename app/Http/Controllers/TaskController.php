@@ -76,6 +76,14 @@ class TaskController extends Controller
         ]);
 
         return redirect('/todoList');
-       
+    }
+
+    public function View($num)
+    {
+        $data = Task::select('title', 'content', 'num')->where('num', $num)->get();
+
+        return view('tasks.view', [
+            'data'=>$data
+        ]);
     }
 }

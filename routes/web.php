@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware('auth')->group(function(){
     Route::get('/todoList', 'TaskController@index');
     Route::get('/create', 'TaskController@create_View');
+    Route::get('/tasks/view/{num}', 'TaskController@View');
     Route::post('/create_todoList', 'TaskController@todoList');
     Route::delete('/delete/{num}', 'TaskController@delete');
     Route::get('/edit/{num}', 'TaskController@edit');
