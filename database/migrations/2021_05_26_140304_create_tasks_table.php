@@ -21,7 +21,7 @@ class CreateTasksTable extends Migration
             $table->string('waste_Chk');
             $table->string('progress_Check');
 
-            $table->foreign('user_id')->reference('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

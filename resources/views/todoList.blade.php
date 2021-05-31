@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('content')
     <ul>
         @foreach($list as $lists)
@@ -8,7 +10,7 @@
                     <div class="flex-none w-48 relative">
                         <img src="/classic-utility-jacket.jpg" alt="" class="absolute inset-0 w-full h-full object-cover"/>
                     </div>
-                    <form class="flex-auto p-6">
+                    <div class="flex-auto p-6">
                         <div class="flex flex-wrap">
                             <h1 class="flex-auto text-xl font-semibold">
                                 {{$lists->title}}
@@ -22,33 +24,38 @@
                         </div>
                         <div class="flex items-baseline mt-4 mb-6">
                             <div class="space-x-2 flex">
-                                <label>
-                                    <input class="w-9 h-9 flex items-center justify-center bg-gray-100 rounded-lg" name="size" type="radio" value="xs" checked="checked">
+                                <label class="mr-3">
+                                    <input class="w-5 h-5 flex items-center justify-center bg-gray-100 rounded-lg" name="size" type="radio" value="xs" checked="checked">
                                         Excellent!
                                 </label>
-                                <label>
-                                    <input class="w-9 h-9 flex items-center justify-center" name="size" type="radio" value="s">
+                                <label class="mr-3">
+                                    <input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="s">
                                     Good!
                                 </label>
-                                <label>
-                                    <input class="w-9 h-9 flex items-center justify-center" name="size" type="radio" value="m">
+                                <label class="mr-3">
+                                    <input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="m">
                                     SoSo
                                 </label>
-                                <label>
-                                    <input class="w-9 h-9 flex items-center justify-center" name="size" type="radio" value="l">
+                                <label class="mr-3">
+                                    <input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="l">
                                     Not Bad
                                 </label>
-                                <label>
-                                    <input class="w-9 h-9 flex items-center justify-center" name="size" type="radio" value="xl">
+                                <label class="mr-3">
+                                    <input class="w-5 h-5 flex items-center justify-center" name="size" type="radio" value="xl">
                                     Bad
                                 </label>
                             </div>
                         </div>
                         <div class="flex space-x-3 mb-4 text-sm font-medium">
                             <div class="flex-auto flex space-x-3">
-                                <button class="w-1/12 flex py-2 items-center justify-center rounded-md bg-green-400 text-white" type="submit">Save</button>
-                                <button class="w-1/12 flex py-2 items-center justify-center rounded-md bg-red-400 text-white" type="button">Delete</button>
-                                <button class="w-1/12 flex py-2 items-center justify-center rounded-md border border-green-500 text-green-500" type="button">Edit</button>
+                                
+                                <button class="w-24 flex py-2 items-center justify-center rounded-md bg-green-400 text-white" type="submit">Complete</button>
+                                <form action="/delete/{{$lists->num}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="w-24 flex py-2 items-center justify-center rounded-md bg-red-400 text-white" type="button">Delete</button>
+                                </form>
+                                <a href="/edit/{{$lists->num}}" class="w-24 flex py-2 items-center justify-center rounded-md border border-green-500 text-green-500" >Edit</a>
                             </div>
                         </div>
                         <p class="text-sm text-gray-500">
@@ -60,7 +67,7 @@
                                 Update At {{$lists->updated_at}}
                             </span>
                         </p>
-                    </form>
+                    </div>
                 </div>
             </li>
         @endforeach

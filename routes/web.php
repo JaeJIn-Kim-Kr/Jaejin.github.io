@@ -21,5 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function(){
     Route::get('/todoList', 'TaskController@index');
-    Route::get('/create', 'TaskController@create');
+    Route::get('/create', 'TaskController@create_View');
+    Route::post('/create_todoList', 'TaskController@todoList');
+    Route::delete('/delete/{num}', 'TaskController@delete');
+    Route::get('/edit/{num}', 'TaskController@edit');
+    Route::put('/update/{num}', 'TaskController@update');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
