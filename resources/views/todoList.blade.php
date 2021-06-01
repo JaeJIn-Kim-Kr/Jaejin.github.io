@@ -49,6 +49,14 @@
                                     @if($lists->complete_Date != '')Complete At {{$lists->complete_Date}} @endif
                                 </span>
                             </p>
+                            @elseif($lists->progress_Chk == "F")
+                            <p class="text-sm text-gray-500">
+                                <span class="float-right">
+                                    Create At : {{$lists->reg_Date}}<br/>
+                                    @if($lists->mod_Date != '')Update At {{$lists->mod_Date}} <br /> @endif
+                                    @if($lists->complete_Date != '')Complete At {{$lists->complete_Date}} @endif
+                                </span>
+                            </p>
                             @endif
                         </div>
                     </div>

@@ -90,7 +90,7 @@ class TaskController extends Controller
     public function complete($num)
     {
         $data = Task::select('waste_Chk')->where('num', $num)->update([
-            'waste_Chk'     => 'Y',
+            'progress_Chk'  => 'F',
             'mod_Date'      => now(),
             'complete_Date' => now()
         ]);
@@ -103,7 +103,7 @@ class TaskController extends Controller
         $id = Auth::user();
         $row = DB::table('tasks')->where([
             'user_id' => $id->id,
-            'progress_Chk' => 'Y'
+            'progress_Chk' => 'F'
         ])->get();
 
         return view('/todoList',[
