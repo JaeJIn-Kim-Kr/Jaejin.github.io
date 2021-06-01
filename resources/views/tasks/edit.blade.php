@@ -18,7 +18,7 @@
                     <p class="block text-gray-500 text-sm font-bold mb-2 text-xl">
                         Content
                     </p> 
-                    <textarea class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="content">{{ old('content') ? old('content') : $datas->content }}</textarea>
+                    <textarea rows="20" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="content">{{ old('content') ? old('content') : $datas->content }}</textarea>
                     @error('content')<span class="text-red-700">{{ $message }}</span>@enderror
                 </div>
                 <input type="submit" class="w-24 py-2 items-center justify-center rounded-md bg-green-400 text-white" value="Update">

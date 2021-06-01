@@ -17,7 +17,7 @@
                 <span>{{ $datas -> content }}</span>
             </div>
             <div class="mt-20">
-                <a href="/edit/{{ $datas->num }}" class="w-24 inline-block text-center py-2 items-center justify-center rounded-md border border-green-500 text-green-500" >Edit</a>
+                @if($datas->waste_Chk == 'N')<a href="/edit/{{ $datas->num }}" class="w-24 inline-block text-center py-2 items-center justify-center rounded-md border border-green-500 text-green-500" >Edit</a>@endif
                 <a href="/todoList" class="w-24 inline-block text-center py-2 items-center justify-center rounded-md bg-red-400 text-white">Back</a>
             </div>
         </div>

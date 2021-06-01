@@ -4,7 +4,7 @@
     <ul class="mt-10">
         @foreach($list as $lists)
             <li>
-                <div class="flex w-10/12 mx-auto mb-3 border-solid border-2 border-light-blue-300 rounded">
+                <div class="flex w-10/12 mx-auto mb-3 border-solid border-2 border-light-blue-300 rounded h-72">
                     <div class="flex-none w-48 relative">
                         <img src="https://placeimg.com/192/303/any/grayscale" alt="" class="absolute inset-0 w-full h-full object-cover"/>
                     </div>
@@ -20,6 +20,7 @@
                                 {{$lists->content}}
                             </div>
                         </div>
+                        @if($lists->waste_Chk == "N")
                         <div class="flex items-baseline mt-4 mb-6">
                             <div class="space-x-2 flex">
                                 <span><input class="w-5 h-5 flex items-center justify-center bg-gray-100 rounded-lg" name="size" type="radio" value="xs"><label class="mr-3">Excellent!</label></span>
@@ -42,6 +43,7 @@
                                     <button type="submit" class="w-24 flex py-2 items-center justify-center rounded-md bg-red-400 text-white" type="button">Delete</button>
                                 </form>
                                 <a href="/edit/{{$lists->num}}" class="w-24 flex py-2 items-center justify-center rounded-md border border-green-500 text-green-500" >Edit</a>
+                                
                             </div>
                         </div>
                         <p class="text-sm text-gray-500">
@@ -49,10 +51,11 @@
                                 완료되면 체크해주세요
                             </span>
                             <span class="float-right">
-                                Create At {{$lists->created_at}}<br/>
-                                Update At {{$lists->updated_at}}
+                                Create At : {{$lists->reg_Date}}<br/>
+                                @if($lists->mod_Date != '')Update At {{$lists->mod_Date}} @endif
                             </span>
                         </p>
+                        @endif
                     </div>
                 </div>
             </li>

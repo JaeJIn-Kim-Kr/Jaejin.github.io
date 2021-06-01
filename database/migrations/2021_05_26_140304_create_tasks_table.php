@@ -20,9 +20,12 @@ class CreateTasksTable extends Migration
             $table->string('user_id')->nullable();
             $table->string('waste_Chk')->nullable();
             $table->string('progress_Check')->nullable();
+            
+            $table->timestamp('reg_Date')->nullable();
+            $table->timestamp('mod_Date')->nullable();
+            $table->timestamp('complete_Date')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
         });
     }
 
