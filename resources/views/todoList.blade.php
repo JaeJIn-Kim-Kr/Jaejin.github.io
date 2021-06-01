@@ -23,7 +23,7 @@
                                     {{$lists->content}}
                                 </div>
                             </div>
-                            @if($lists->waste_Chk == "N")
+                            @if($lists->progress_Chk == "N")
                             <div class="flex items-baseline mt-4 mb-6">
                                 <div class="space-x-2 flex">
                                     <span><input class="w-5 h-5 flex items-center justify-center" name="progress" type="radio" value="1"><label class="mr-3">Excellent!</label></span>
@@ -46,6 +46,7 @@
                                 <span class="float-right">
                                     Create At : {{$lists->reg_Date}}<br/>
                                     @if($lists->mod_Date != '')Update At {{$lists->mod_Date}} @endif
+                                    @if($lists->complete_Date != '')Complete At {{$lists->complete_Date}} @endif
                                 </span>
                             </p>
                             @endif

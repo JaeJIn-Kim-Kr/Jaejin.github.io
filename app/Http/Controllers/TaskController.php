@@ -34,11 +34,12 @@ class TaskController extends Controller
         ]);
 
         $values = [
-            'title'     => request('title'),
-            'content'   => request('content'),
-            'user_id'   => auth()->id(),
-            'waste_Chk' => 'N',
-            'reg_Date'  => now()
+            'title'         => request('title'),
+            'content'       => request('content'),
+            'user_id'       => auth()->id(),
+            'progress_Chk'  => 'N',
+            'waste_Chk'     => 'N',
+            'reg_Date'      => now()
         ];
         
         $todo = Task::create(
@@ -69,9 +70,9 @@ class TaskController extends Controller
     public function update($num)
     {
         $data = Task::select('title', 'content', 'num')->where('num', $num)->update([
-            'title'=>request('title'),
-            'content'=>request('content'),
-            'mod_Date'=>now()
+            'title'     =>request('title'),
+            'content'   =>request('content'),
+            'mod_Date'  =>now()
         ]);
 
         return redirect('/tasks/view/'.$num);
@@ -89,7 +90,9 @@ class TaskController extends Controller
     public function complete($num)
     {
         $data = Task::select('waste_Chk')->where('num', $num)->update([
-            'waste_Chk'=> 'Y'
+            'waste_Chk'     => 'Y',
+            'mod_Date'      => now(),
+            'complete_Date' => now()
         ]);
 
         return redirect('/todoList');
@@ -100,7 +103,7 @@ class TaskController extends Controller
         $id = Auth::user();
         $row = DB::table('tasks')->where([
             'user_id' => $id->id,
-            'waste_Chk' => 'Y'
+            'progress_Chk' => 'Y'
         ])->get();
 
         return view('/todoList',[
@@ -113,7 +116,7 @@ class TaskController extends Controller
         $id = Auth::user();
         $row = DB::table('tasks')->where([
             'user_id' => $id->id,
-            'waste_Chk' => 'N'
+            'progress_Chk' => 'N'
         ])->get();
 
         return view('/todoList',[
