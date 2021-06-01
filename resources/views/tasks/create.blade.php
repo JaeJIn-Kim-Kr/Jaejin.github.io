@@ -20,8 +20,8 @@
                     <textarea rows="15" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="content">{{ old('content') }}</textarea>
                     @error('content')<span class="text-red-700">{{ $message }}</span>@enderror
                 </div>
-                <input type="submit" class="bg-green-500 hover:bg-green-400 text-white px-3 py-1" value="Create">
-                <a href="/todoList" class="bg-red-500 hover:bg-red-400 text-white px-3 py-1">Back</a>
+                <input type="submit" class="w-24 py-2 items-center justify-center rounded-md bg-green-400 text-white" value="Create">
+                <a href="/todoList" class="w-24 py-2 inline-block text-center justify-center rounded-md bg-red-400 text-white">Back</a>
             </form>
         </div>
     </div>
