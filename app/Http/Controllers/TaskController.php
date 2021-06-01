@@ -14,10 +14,7 @@ class TaskController extends Controller
     public function index()
     {
         $id = Auth::user();
-        $row = DB::table('tasks')->where([
-            'user_id' => $id->id,
-            'waste_Chk' => 'N'
-        ])->latest()->get();
+        $row = DB::table('tasks')->where('user_id' , $id->id)->latest()->get();
 
         return view('/todoList', [
             'list'=>$row
@@ -70,12 +67,12 @@ class TaskController extends Controller
 
     public function update($num)
     {
-        $data = Task::select('title', 'content')->where('num', $num)->update([
+        $data = Task::select('title', 'content', 'num')->where('num', $num)->update([
             'title'=>request('title'),
             'content'=>request('content')
         ]);
 
-        return redirect('/todoList');
+        return redirect('/tasks/view/'.$num);
     }
 
     public function View($num)
@@ -84,6 +81,41 @@ class TaskController extends Controller
 
         return view('tasks.view', [
             'data'=>$data
+        ]);
+    }
+
+    public function complete($num)
+    {
+        $data = Task::select('waste_Chk')->where('num', $num)->update([
+            'waste_Chk'=> 'Y'
+        ]);
+
+        return redirect('/todoList');
+    }
+
+    public function completeList()
+    {
+        $id = Auth::user();
+        $row = DB::table('tasks')->where([
+            'user_id' => $id->id,
+            'waste_Chk' => 'Y'
+        ])->latest()->get();
+
+        return view('/todoList',[
+            'list' => $row
+        ]);
+    }
+
+    public function incompleteList()
+    {
+        $id = Auth::user();
+        $row = DB::table('tasks')->where([
+            'user_id' => $id->id,
+            'waste_Chk' => 'N'
+        ])->latest()->get();
+
+        return view('/todoList',[
+            'list' => $row
         ]);
     }
 }

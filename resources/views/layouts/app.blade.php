@@ -38,7 +38,10 @@
                         @guest
                             
                         @else
-                            <a href="/create">Create</a>
+                            <li class="mr-3"><a href="/todoList">To Do List</a></li>
+                            <li class="mr-3"><a href="/todo/complete">Complete List</a></li>
+                            <li class="mr-3"><a href="/todo/incomplete">Incomplete List</a></li>
+                            <li><a href="/create">Create</a></li>
                         @endguest
                     </ul>
 

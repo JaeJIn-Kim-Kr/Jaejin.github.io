@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-
-
 @section('content')
     <ul class="mt-10">
         @foreach($list as $lists)
@@ -33,8 +31,11 @@
                         </div>
                         <div class="flex space-x-3 mb-4 text-sm font-medium">
                             <div class="flex-auto flex space-x-3">
-                                
-                                <button class="w-24 flex py-2 items-center justify-center rounded-md bg-green-400 text-white" type="submit">Complete</button>
+                                <form action="/complete/{{$lists->num}}" method="post">
+                                    @csrf
+                                    @method('PUT')
+                                    <button class="w-24 flex py-2 items-center justify-center rounded-md bg-green-400 text-white" type="submit">Complete</button>
+                                </form>
                                 <form action="/delete/{{$lists->num}}" method="post">
                                     @csrf
                                     @method('DELETE')
