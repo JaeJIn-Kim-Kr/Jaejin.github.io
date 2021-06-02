@@ -21,6 +21,9 @@ class CreateTasksTable extends Migration
             $table->string('waste_Chk')->nullable();
             $table->string('progress_Check')->nullable();
             
+            $table->string('file_Name')->nullable();
+            $table->string('file_Path')->nullable();
+            
             $table->timestamp('reg_Date')->nullable();
             $table->timestamp('mod_Date')->nullable();
             $table->timestamp('complete_Date')->nullable();

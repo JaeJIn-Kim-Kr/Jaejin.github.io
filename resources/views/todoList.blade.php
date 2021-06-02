@@ -3,13 +3,14 @@
 @section('content')
     <ul class="mt-10">
         @foreach($list as $lists)
+        
             <li>
                 <form action="/complete/{{$lists->num}}" method="post">
                 @csrf
                 @method('PUT')
                     <div class="flex w-10/12 mx-auto mb-3 border-solid border-2 border-light-blue-300 rounded h-72">
                         <div class="flex-none w-48 relative">
-                            <img src="https://placeimg.com/192/303/any/grayscale" alt="" class="absolute inset-0 w-full h-full object-cover"/>
+                            <img src="storage/app/uploads/2021/06/boxing.jpg" alt="" class="absolute inset-0 w-full h-full object-cover"/>
                         </div>
                         <div class="flex-auto p-6">
                             <div class="flex flex-wrap">
