@@ -26,27 +26,44 @@ class TaskController extends Controller
         return view('tasks.create');
     }
 
-    public function todoList()
+    public function todoList(Request $request)
     {
-        request()->validate([
-            'title' => 'required',
-            'content' => 'required'
-        ]);
+        $task_File = request()->file('task_File');
 
-        $values = [
-            'title'         => request('title'),
-            'content'       => request('content'),
-            'user_id'       => auth()->id(),
-            'progress_Chk'  => 'N',
-            'waste_Chk'     => 'N',
-            'reg_Date'      => now()
-        ];
+        $fileName = rand(1, 999) . $task_File->getClientOriginalName();
+        $filePath = "/uploads/" . date("Y") . '/' . date("m") . "/" . $fileName;
+
+        //$task_File->storeAs('uploads/'. date("Y") . '/' . date("m") . '/', $fileName, 'uploads');
+
+        return $filePath;
+
+        //return $task_File;
+
+        //return File::create(['file_name' => $fileName, 'path' => $filePath, 'file_extension' => $task_File->getClientOriginalExtension()]);
+        // 실제 파일명
+        //return request()->file('task_File')->getClientOriginalName();
+
+        // 확장자명
+        //return request()->file('task_File')->getClientOriginalExtension();
+        // request()->validate([
+        //     'title' => 'required',
+        //     'content' => 'required'
+        // ]);
+
+        // $values = [
+        //     'title'         => request('title'),
+        //     'content'       => request('content'),
+        //     'user_id'       => auth()->id(),
+        //     'progress_Chk'  => 'N',
+        //     'waste_Chk'     => 'N',
+        //     'reg_Date'      => now()
+        // ];
         
-        $todo = Task::create(
-            $values
-        );
+        // $todo = Task::create(
+        //     $values
+        // );
 
-        return redirect('/todoList');
+        // return redirect('/todoList');
     }
 
     public function delete($num)
