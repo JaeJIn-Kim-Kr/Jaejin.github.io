@@ -4,13 +4,12 @@
     <ul class="mt-10">
         @foreach($list as $lists)
             <li>
-                {{public_path('storage'.$lists->file_Path)}}
                 <form action="/complete/{{$lists->num}}" method="post">
                 @csrf
                 @method('PUT')
                     <div class="flex w-10/12 mx-auto mb-3 border-solid border-2 border-light-blue-300 rounded h-72">
                         <div class="flex-none w-48 relative">
-                            <img src="{{ url('uploads/202106/crossmark_logo.gif') }}" alt="" class="absolute inset-0 w-full h-full object-cover"/>
+                            <img src="{{ Storage::url('app/public/uploads/2021/06/'.$lists->file_Name) }}" alt="" class="absolute inset-0 w-full h-full object-cover"/>
                         </div>
                         <div class="flex-auto p-6">
                             <div class="flex flex-wrap">
