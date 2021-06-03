@@ -31,7 +31,8 @@ class TaskController extends Controller
         $task_File = request()->file('task_File');
 
         $fileName = $task_File->getClientOriginalName();
-        $filePath = "/uploads/" . date("Y") . '/' . date("m");
+        $filePath = "/public/uploads/" . date("Y") . '/' . date("m");
+        $filePath_DB = "/uploads/" . date("Y") . '/' . date("m");
 
         $latestNum = DB::table('tasks')->select('num')->orderBy('num', "DESC")->take(1)->get();
         $task_File->storeAs($filePath, $fileName);
@@ -53,7 +54,7 @@ class TaskController extends Controller
             'progress_Chk'  => 'N',
             'waste_Chk'     => 'N',
             'file_Name'     => $fileName,
-            'file_Path'     => $filePath,
+            'file_Path'     => $filePath_DB,
             'reg_Date'      => now()
         ];
         
