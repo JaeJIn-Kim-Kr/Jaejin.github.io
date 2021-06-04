@@ -10,7 +10,7 @@
                     <p class="block text-gray-500 text-sm font-bold mb-2 text-xl">
                         Title
                     </p>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" type="text" value="{{ old('title') }}">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" type="text" value="{{ old('titlecd') }}">
                     @error('title')<span class="text-red-700">{{ $message }}</span>@enderror
                 </div>
                 <div class="mb-4">

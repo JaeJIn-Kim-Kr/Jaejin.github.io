@@ -17,8 +17,11 @@ class TaskController extends Controller
         $id = Auth::user();
         $row = DB::table('tasks')->where('user_id' , $id->id)->get();
 
+        $path = Storage::path('E-search_icon.png');
+
         return view('/todoList', [
-            'list'=>$row
+            'list'=>$row,
+            'file_path'=>$path
         ]);
     }
 
@@ -32,17 +35,31 @@ class TaskController extends Controller
         $task_File = request()->file('task_File');
 
         $fileName = $task_File->getClientOriginalName();
-        $filePath = "/public/uploads/" . date("Y") . '/' . date("m");
-        $filePath_DB = "/uploads/" . date("Y") . '/' . date("m");
+        $filePath_DB = "public/";
 
-        $latestNum = DB::table('tasks')->select('num')->orderBy('num', "DESC")->take(1)->get();
-        $task_File->storeAs($filePath, $fileName);
+        // echo asset('storage/file.txt');
+
+        // 로컬파일에 Contents 내용이 적힌 example.txt 파일을 만든다 
+        // /storage/app 경로
+        // Storage::disk('local')->put($fileName, 'Contents');
+        $task_File->storeAs($filePath_DB, $fileName);
+
+        
+        // $filePath = "/public/uploads/" . date("Y") . '/' . date("m");
+        // $filePath_DB = "/uploads/" . date("Y") . '/' . date("m");
+
+        // $latestNum = DB::table('tasks')->select('num')->orderBy('num', "DESC")->take(1)->get();
 
         // 실제 파일명
-        //return request()->file('task_File')->getClientOriginalName();
+        // return request()->file('task_File')->getClientOriginalName();
 
         // 확장자명
-        //return request()->file('task_File')->getClientOriginalExtension();
+        // return request()->file('task_File')->getClientOriginalExtension();
+
+        // 파일 다운로드
+        // return Storage::download('file.jpg');
+        // HTTP 헤더 배열을 세번째 인수로 전달 할 수 있음
+        // return Storage::download('file.jpg', $name, $headers);
         request()->validate([
             'title' => 'required',
             'content' => 'required'
