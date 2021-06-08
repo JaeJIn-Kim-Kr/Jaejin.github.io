@@ -9,7 +9,7 @@
                 @method('PUT')
                     <div class="flex w-10/12 mx-auto mb-3 border-solid border-2 border-light-blue-300 rounded h-72">
                         <div class="flex-none w-48 relative">
-                            <img src="{{ storage_path( 'app\\' ).$lists->file_Name }}" alt="TTT" class="absolute inset-0 w-full h-full object-cover"/>
+                            <img src="{{ url('storage/images/'.$lists->file_Name) }}" alt="Image" class="absolute inset-0 w-full h-full object-cover"/>
                         </div>
                         <div class="flex-auto p-6">
                             <div class="flex flex-wrap">

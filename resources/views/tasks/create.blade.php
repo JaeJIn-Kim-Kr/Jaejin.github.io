@@ -10,7 +10,7 @@
                     <p class="block text-gray-500 text-sm font-bold mb-2 text-xl">
                         Title
                     </p>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" type="text" value="{{ old('titlecd') }}">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" type="text" value="{{ old('title') }}">
                     @error('title')<span class="text-red-700">{{ $message }}</span>@enderror
                 </div>
                 <div class="mb-4">
@@ -29,6 +29,13 @@
                 <input type="submit" class="w-24 py-2 items-center justify-center rounded-md bg-green-400 text-white" value="Create">
                 <a href="/todoList" class="w-24 py-2 inline-block text-center justify-center rounded-md bg-red-400 text-white">Back</a>
             </form>
+            @if ($errors)
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            @endif
         </div>
     </div>
 @endsection

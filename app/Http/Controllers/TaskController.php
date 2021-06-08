@@ -32,19 +32,17 @@ class TaskController extends Controller
 
     public function todoList(Request $request)
     {
-        $task_File = request()->file('task_File');
-
-        $fileName = $task_File->getClientOriginalName();
-        $filePath_DB = "public/";
-
-        // echo asset('storage/file.txt');
-
-        // 로컬파일에 Contents 내용이 적힌 example.txt 파일을 만든다 
-        // /storage/app 경로
-        // Storage::disk('local')->put($fileName, 'Contents');
-        $task_File->storeAs($filePath_DB, $fileName);
-
         
+        if(request()->file('task_File')){
+            $task_File = request()->file('task_File');
+
+            $fileName = $task_File->getClientOriginalName();
+            $filePath_DB = "/public/images/";
+        } else {
+            $fileName = "";
+        }
+        // Tell the validator that this file should be an image
+                
         // $filePath = "/public/uploads/" . date("Y") . '/' . date("m");
         // $filePath_DB = "/uploads/" . date("Y") . '/' . date("m");
 
@@ -61,9 +59,12 @@ class TaskController extends Controller
         // HTTP 헤더 배열을 세번째 인수로 전달 할 수 있음
         // return Storage::download('file.jpg', $name, $headers);
         request()->validate([
-            'title' => 'required',
-            'content' => 'required'
+            'title'         => 'required',
+            'content'       => 'required',
+            'file_Name'     => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
+
+        $task_File->storeAs($filePath_DB, $fileName);
 
         $values = [
             'title'         => request('title'),
