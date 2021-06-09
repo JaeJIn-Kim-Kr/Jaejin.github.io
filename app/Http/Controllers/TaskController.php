@@ -33,13 +33,16 @@ class TaskController extends Controller
     public function todoList(Request $request)
     {
         
-        if(request()->file('task_File')){
+        if(request()->file('task_File') != ''){
             $task_File = request()->file('task_File');
 
             $fileName = $task_File->getClientOriginalName();
             $filePath_DB = "/public/images/";
+
+            $task_File->storeAs($filePath_DB, $fileName);
         } else {
             $fileName = "";
+            $filePath_DB = "";
         }
         // Tell the validator that this file should be an image
                 
@@ -60,11 +63,10 @@ class TaskController extends Controller
         // return Storage::download('file.jpg', $name, $headers);
         request()->validate([
             'title'         => 'required',
-            'content'       => 'required',
-            'file_Name'     => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'content'       => 'required'
         ]);
 
-        $task_File->storeAs($filePath_DB, $fileName);
+        
 
         $values = [
             'title'         => request('title'),
@@ -104,10 +106,10 @@ class TaskController extends Controller
 
     public function update($num)
     {
-        $data = Task::select('title', 'content', 'num')->where('num', $num)->update([
-            'title'     =>request('title'),
-            'content'   =>request('content'),
-            'mod_Date'  =>now()
+        $data = DB::table('tasks')->where('num', $num)->update([
+            'title'         =>request('title'),
+            'content'       =>request('content'),
+            'mod_Date'      =>now()
         ]);
 
         return redirect('/tasks/view/'.$num);
@@ -124,11 +126,9 @@ class TaskController extends Controller
 
     public function complete($num)
     {
-
-        return $num;
-        exit;
         $data = Task::select('waste_Chk')->where('num', $num)->update([
             'progress_Chk'  => 'F',
+            'task_rating'   => request('task_rating'),
             'mod_Date'      => now(),
             'complete_Date' => now()
         ]);

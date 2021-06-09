@@ -26,11 +26,10 @@
                             @if($lists->progress_Chk == "N")
                             <div class="flex items-baseline mt-4 mb-6">
                                 <div class="space-x-2 flex">
-                                    <span><input class="w-5 h-5 flex items-center justify-center" name="progress" type="radio" value="1"><label class="mr-3">Excellent!</label></span>
-                                    <span><input class="w-5 h-5 flex items-center justify-center" name="progress" type="radio" value="2"><label class="mr-3">Good!</label></span>
-                                    <span><input class="w-5 h-5 flex items-center justify-center" name="progress" type="radio" value="3"><label class="mr-3">SoSo</label></span>
-                                    <span><input class="w-5 h-5 flex items-center justify-center" name="progress" type="radio" value="4"><label class="mr-3">Not Bad</label></span>
-                                    <span><input class="w-5 h-5 flex items-center justify-center" name="progress" type="radio" value="5"><label class="mr-3">Bad</label></span>
+                                    <span><input class="w-5 h-5 flex items-center justify-center" name="task_rating" id="rating1" type="radio" value="1"><label for="rating1" class="mr-3">Accept</label></span>
+                                    <span><input class="w-5 h-5 flex items-center justify-center" name="task_rating" id="rating2" type="radio" value="2"><label for="rating2" class="mr-3">Minor Revision</label></span>
+                                    <span><input class="w-5 h-5 flex items-center justify-center" name="task_rating" id="rating3" type="radio" value="3"><label for="rating3" class="mr-3">Major Revision</label></span>
+                                    <span><input class="w-5 h-5 flex items-center justify-center" name="task_rating" id="rating4" type="radio" value="4"><label for="rating4" class="mr-3">Reject</label></span>
                                 </div>
                             </div>
                             <div class="flex space-x-3 mb-4 text-sm font-medium">
