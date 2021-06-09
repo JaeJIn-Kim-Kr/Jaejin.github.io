@@ -124,6 +124,9 @@ class TaskController extends Controller
 
     public function complete($num)
     {
+
+        return $num;
+        exit;
         $data = Task::select('waste_Chk')->where('num', $num)->update([
             'progress_Chk'  => 'F',
             'mod_Date'      => now(),
