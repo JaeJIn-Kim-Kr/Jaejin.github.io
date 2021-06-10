@@ -117,7 +117,7 @@ class TaskController extends Controller
 
     public function View($num)
     {
-        $data = Task::select('title', 'content', 'num')->where('num', $num)->get();
+        $data = Task::select('title', 'content', 'num', 'task_rating', 'progress_Chk', 'reg_Date', 'mod_Date', 'complete_Date')->where('num', $num)->get();
 
         return view('tasks.view', [
             'data'=>$data

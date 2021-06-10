@@ -56,6 +56,9 @@
                                     @if($lists->complete_Date != '')Complete At {{$lists->complete_Date}} @endif
                                 </span>
                             </p>
+                            <div class="flex items-baseline mt-4 mb-6">
+                                Result : {{ $ratingArr[$lists->task_rating] }}
+                            </div>
                             @endif
                         </div>
                     </div>
