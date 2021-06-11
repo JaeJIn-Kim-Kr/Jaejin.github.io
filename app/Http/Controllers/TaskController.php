@@ -15,7 +15,7 @@ class TaskController extends Controller
     public function index()
     {
         $id = Auth::user();
-        $row = DB::table('tasks')->where('user_id' , $id->id)->get();
+        $row = DB::table('tasks')->where('user_id' , $id->id)->paginate(15);
 
         $path = Storage::path('E-search_icon.png');
 

@@ -3,7 +3,14 @@
     <ul class="mt-10">
         @foreach($list as $lists)
             <li>
-                
+                <?php 
+                    $ratingArr = array(
+                        "Accept",
+                        "Minor Revision",
+                        "Major Revision",
+                        "Reject"
+                    );
+                ?>
                 <form action="/complete/{{$lists->num}}" method="post">
                 @csrf
                 @method('PUT')
@@ -66,4 +73,7 @@
             </li>
         @endforeach
     </ul>
+    <div class='justify-center'>
+        {{ $list -> links() }}
+    </div>
 @endsection
