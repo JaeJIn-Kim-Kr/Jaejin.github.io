@@ -142,7 +142,7 @@ class TaskController extends Controller
         $row = DB::table('tasks')->where([
             'user_id' => $id->id,
             'progress_Chk' => 'F'
-        ])->get();
+        ])->paginate(15);
 
         return view('/todoList',[
             'list' => $row
@@ -155,7 +155,7 @@ class TaskController extends Controller
         $row = DB::table('tasks')->where([
             'user_id' => $id->id,
             'progress_Chk' => 'N'
-        ])->get();
+        ])->paginate(15);
 
         return view('/todoList',[
             'list' => $row

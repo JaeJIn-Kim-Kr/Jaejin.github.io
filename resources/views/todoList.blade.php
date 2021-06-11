@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <ul class="mt-10">
+        @if($list->count() >= 1)
         @foreach($list as $lists)
             <li>
                 <?php 
@@ -14,10 +15,12 @@
                 <form action="/complete/{{$lists->num}}" method="post">
                 @csrf
                 @method('PUT')
-                    <div class="flex w-10/12 mx-auto mb-3 border-solid border-2 border-light-blue-300 rounded h-72">
+                    <div class="flex w-10/12 mx-auto mb-3 border-solid border-2 border-light-blue-300 rounded h-72 hover:bg-gray-100 transition duration-200">
+                        @if($lists->file_Name != '')
                         <div class="flex-none w-48 relative">
                             <img src="{{ url('storage/images/'.$lists->file_Name) }}" alt="Image" class="absolute inset-0 w-full h-full object-cover"/>
                         </div>
+                        @endif
                         <div class="flex-auto p-6">
                             <div class="flex flex-wrap">
                                 <h3 class="flex-auto text-xl font-semibold">
@@ -42,7 +45,7 @@
                             <div class="flex space-x-3 mb-4 text-sm font-medium">
                                 <div class="flex-auto flex space-x-3">
                                     <button class="w-24 flex py-2 items-center justify-center rounded-md bg-green-400 text-white" type="submit">Complete</button>
-                                    <a href="/edit/{{$lists->num}}" class="w-24 flex py-2 items-center justify-center rounded-md border border-green-500 text-green-500" >Edit</a>
+                                    <a href="/edit/{{$lists->num}}" class="w-24 flex py-2 items-center justify-center rounded-md border border-green-700 text-green-500">Edit</a>
                                 </div>
                             </div>
                             <p class="text-sm text-gray-500">
@@ -71,7 +74,13 @@
                     </div>
                 </form>
             </li>
+           
         @endforeach
+        @else
+            <li>
+            <div class="w-10/12 mx-auto mb-3 rounded h-72 text-center item-center text-2xl">Empty Data!</div>
+            </li>
+        @endif
     </ul>
     <div class='justify-center'>
         {{ $list -> links() }}
