@@ -82,11 +82,7 @@
             </li>
         @endif
     </ul>
-    <div id="app">
-        <div class="container">
-            <articles></articles>    
-        </div>
-    </div>
+    
 
     <div class='justify-center'>
         {{ $list -> links() }}
